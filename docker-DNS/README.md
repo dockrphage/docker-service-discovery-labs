@@ -176,6 +176,9 @@ services:
     image: containous/whoami
     deploy:
       replicas: 3   # Swarm mode
+  client:
+    image: alpine
+    command: sh -c "apk add --no-cache bind-tools curl && sleep 3600"
 ```
 
 *Note: Scaling replicas works fully in Swarm. For plain Compose, use `docker-compose up --scale whoami=3` (v2.4+).*
